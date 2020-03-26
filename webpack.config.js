@@ -1,5 +1,4 @@
 const path = require('path')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: {
@@ -12,28 +11,27 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(scss|css)$/i,
+                use: ['style-loader', 'css-loader', 'sass-loader'],
+            },
+            {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                 },
             },
-            // {
-            //     test: /\.html$/,
-            //     use: [
-            //         {
-            //             loader: 'html-loader',
-            //         },
-            //     ],
-            // },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg|png)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                    },
+                ],
+            },
         ],
     },
-    plugins: [
-        // new HtmlWebPackPlugin({
-        //     template: './public/index.html',
-        //     filename: './index.html',
-        // }),
-    ],
+    plugins: [],
     devServer: {
         contentBase: path.join(__dirname, 'public'),
         compress: true,

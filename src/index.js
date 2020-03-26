@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
+import './index.css'
 const App = props => {
     return (
         <div
@@ -8,6 +8,7 @@ const App = props => {
         >
             <h1>Thtis is a b</h1>
             <pre>{JSON.stringify(props.state, null, 2)}</pre>
+            <div className="app"></div>
         </div>
     )
 }
